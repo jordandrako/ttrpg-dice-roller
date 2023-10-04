@@ -10,8 +10,11 @@ module.exports = {
     'airbnb-typescript',
     'prettier',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: './tsconfig.json',
+  },
   plugins: ['react-refresh', 'prettier'],
   rules: {
     'react-refresh/only-export-components': [
@@ -21,4 +24,12 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'prettier/prettier': 'error',
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'react/jsx-filename-extension': [2, { extensions: ['.ts', '.tsx'] }],
+      },
+    },
+  ],
 };
